@@ -7,13 +7,11 @@ class AdminDataTable
 {
     protected $functions = [];
     protected $models = [];
-    protected $view;
 
     public function __construct($models, array $functions, ...$args)
     {
         $this->models = $models;
         $this->functions = $functions;
-        $this->view = new View();
     }
 
     public function render()
