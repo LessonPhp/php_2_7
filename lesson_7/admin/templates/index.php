@@ -23,10 +23,11 @@
     <tbody>
     <?php foreach ($this->articles as $article) { ?>
         <tr>
-            <?php foreach ($article as $row) { ?>
-                <td><?php echo $row; ?></td>
+            <?php foreach($article as $column) { ?>
+                <td><?php echo $column; ?></td>
                 <?php
-            } ?>
+                }
+                ?>
             <td>
                 <a href="/lesson_7/home_work1/?ctrl=Admin&action=ViewUpdate&id=<?php echo $article['id']; ?>">
                     <p style="text-align: center;">обновить новость</p>

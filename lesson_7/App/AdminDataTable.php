@@ -7,22 +7,28 @@ class AdminDataTable
 {
     protected $functions = [];
     protected $models = [];
+    protected $view;
 
     public function __construct($models, array $functions, ...$args)
     {
         $this->models = $models;
         $this->functions = $functions;
+        $this->view = new View();
     }
 
+    // исправила
     public function render()
     {
         $result = [];
 
-        foreach ($this->models as $index => $model) {
-            foreach ($this->functions as $key => $function) {
-                $result[$index][$key] = $function($model);
+        foreach ($this->models as $index => $string) {
+            foreach ($this->functions as $key => $col) {
+                $result[$index][$key] = $col($string);
             }
         }
-        return $result;
+
+        $this->view->articles = $result;
+        $this->view->display(__DIR__ . '/../admin/templates/index.php');
+
     }
 }

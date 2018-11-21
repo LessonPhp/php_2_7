@@ -15,26 +15,27 @@ class Admin extends Controller
         $articles = \App\Models\Article::findAll();
         $table = new AdminDataTable($articles,
             [
-                'id' => function ($article) {
-                    return $article->id;
-
+                'id' => function($model)
+                {
+                    return $model->id;
                 },
-                function ($article) {
-                    return $article->title;
-
+                'title' => function($model)
+                {
+                    return $model->title;
                 },
-                function ($article) {
-                    return $article->content;
+                'content' => function($model)
+                {
+                    return $model->content;
                 },
 
-                function ($article) {
-                    return $article->author->name;
+                'author' => function($model)
+                {
+                    return $model->author->name;
                 }
             ]
         );
 
-        $this->view->articles = $table->render();
-        $this->view->display(__DIR__ . '/../../admin/templates/index.php');
+        $table->render();
     }
 
     // использование метода fill
