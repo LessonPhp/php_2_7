@@ -45,8 +45,6 @@ class Db
             }
         }
     }
-
-    // исправила
     public function execute($query, $params = [])
     {
         $sth = $this->dbh->prepare($query);
